@@ -13,7 +13,7 @@
                 <p class="bold">Изображение</p>
             </div>
             <div class="col-md-3">
-                <input class="form-control" type="file" accept=".jpg, .png" name="image"></input>
+                <input class="form-control" type="file" accept=".jpg, .png" name="image" required></input>
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -22,7 +22,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6 text-center">
                 <input type="submit" class="btn btn-primary text-white w-100 mb-2" value="Сохранить"></input>
-                <a href="./account">Отменить</a>
+                <a href="./room?id=<?php echo $_GET["id"]?>">Отменить</a>
             </div>
             <div class="col-md-3"></div>
         </div>

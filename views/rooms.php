@@ -1,6 +1,11 @@
 
 <div class="container">
     <div class="row d-flex justify-content-center">
+        <?php if($auth){ ?>
+            <div class="col-md-12 text-center mb-5">
+                <a href="./room-create">Создать объявление</a>
+            </div>
+        <?php } ?>
         <?php
             $rooms = (new RoomsController())->getAll();
             foreach($rooms as $room){

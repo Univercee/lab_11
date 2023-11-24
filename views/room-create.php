@@ -14,7 +14,7 @@
                 <p class="bold">Изображение</p>
             </div>
             <div class="col-md-3">
-                <input class="form-control" type="file" accept=".jpg, .png" name="image"></input>
+                <input class="form-control" type="file" accept=".jpg, .png" name="image" required></input>
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-3">
-                <p class="bold">Группа крови</p>
+                <p class="bold">Ответсвенный сотрудник</p>
             </div>
             <div class="col-md-3">
                 <select class="form-select" name="employer_id" required>
