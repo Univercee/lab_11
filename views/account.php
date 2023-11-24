@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 d-flex justify-content-center">
-            <img style="height:200px; border-radius: 50%;" src="./inc/catalog_images/<?php echo $user["image"]??"image_default.png" ?>" alt="">
+            <img style="height:200px; border-radius: 50%;" src="./inc/catalog_images/users/<?php echo $user["image"]??"image_default.png" ?>" alt="">
         </div>
         <div class="col-md-3"></div>
     </div>

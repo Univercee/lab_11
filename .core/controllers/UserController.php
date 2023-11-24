@@ -94,7 +94,7 @@ class UserController {
         $id = $this->table->getIdByToken($_COOKIE['session_token']);
         $img_name = $id.".jpg";
         $allowed_types = ['png', 'jpg'];
-        $path = $_SERVER['DOCUMENT_ROOT'].'/Lr/inc/catalog_images/'.$id.'.jpg';
+        $path = $_SERVER['DOCUMENT_ROOT'].'/Lr/inc/catalog_images/users/'.$id.'.jpg';
         try {
             if(is_null($image)){
                 $this->table->deleteImage($id);
