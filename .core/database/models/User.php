@@ -29,7 +29,7 @@ class User {
     }
 
     public function getByToken($token){
-        $query = $this->pdo->prepare("SELECT `users`.*, `shooting_types`.id AS `shooting_type_id`, `shooting_types`.name AS `shooting_type` FROM `users`
+        $query = $this->pdo->prepare("SELECT `users`.* FROM `users`
                                     JOIN `sessions` ON `users`.id = `sessions`.user_id
                                     LEFT JOIN `shooting_types` ON `users`.shooting_type_id = `shooting_types`.id
                                     WHERE `sessions`.token=:session_token");
@@ -74,15 +74,14 @@ class User {
         return !empty($user);
     }
 
-    public function edit($id, $name, $sex, $birthday_timestamp, $shooting_type_id, $address, $description, $vk_link, $blood_type, $rh_factor){
+    public function edit($id, $name, $sex, $birthday_timestamp, $address, $description, $vk_link, $blood_type, $rh_factor){
         $query = $this->pdo->prepare("UPDATE `users`
-                                    SET name = :name, shooting_type_id = :shooting_type_id, sex = :sex, birthday = :birthday_timestamp, address = :address,
+                                    SET name = :name, sex = :sex, birthday = :birthday_timestamp, address = :address,
                                                 description = :description, vk_link = :vk_link, blood_type = :blood_type,
                                                 rh_factor = :rh_factor
                                     WHERE id = :id");
         $query->bindParam(':id', $id);
         $query->bindParam(':name', $name);
-        $query->bindParam(':shooting_type_id', $shooting_type_id);
         $query->bindParam(':sex', $sex);
         $query->bindParam(':birthday_timestamp', $birthday_timestamp);
         $query->bindParam(':address', $address);

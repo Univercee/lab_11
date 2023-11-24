@@ -19,24 +19,23 @@ class UserController {
             array_push($this->errors, 'Пароли не совпадают');
         }
         if($this->table->checkLoginExist($login)){
-            array_push($this->errors, 'Пользователь с таким логином уже существует');
+            array_push($this->errors, 'Пользователь с такой почтой уже существует');
         }
 
-        // chatGPT в помощь при составлении regex)
         if(!preg_match("/^[a-zA-Z\d!@#$%^&*(),.?\"':{}|<>]*[a-zA-Z][a-zA-Z\d!@#$%^&*(),.?\":{}|<>]*$/", $password)){
-            array_push($this->errors, 'Пароль должен содержать только латинкие буквы');
+            array_push($this->errors, 'Разрешены только латинкие буквы');
         }
         if(!preg_match("/^.{6,}$/u", $password)){
-            array_push($this->errors, 'Пароль должен содержать как минимум 6 символов');
+            array_push($this->errors, 'Пароль должен содержать хотя бы 6 символов');
         }
         if(!preg_match("/^(?=.*[A-Z]).+$/", $password)){
-            array_push($this->errors, 'Пароль должен содержать хотя бы одну заглавную латинскую букву');
+            array_push($this->errors, 'Пароль должен содержать заглавную латинскую букву');
         }
         if(!preg_match("/[!@#$%^&*(),.?\"':{}|<>]/", $password)){
-            array_push($this->errors, 'Пароль должен содержать хотя бы один спецсимвол');
+            array_push($this->errors, 'Пароль должен содержать спецсимвол');
         }
         if(!preg_match("/\d/", $password)){
-            array_push($this->errors, 'Пароль должен содержать хотя бы одну цифру');
+            array_push($this->errors, 'Пароль должен содержать цифру');
         }
         if(empty($this->errors)){
             $this->table->create($login, password_hash($password, PASSWORD_DEFAULT));
@@ -70,14 +69,14 @@ class UserController {
         return ["errors"=>$this->errors, "session_token"=>$session_token];
     }
 
-    public function edit(string $name = null, int $sex = null, string $birthday_timestamp = null, int $shooting_type_id = null, string $address = null,
+    public function edit(string $name = null, int $sex = null, string $birthday_timestamp = null, string $address = null,
                         string $description = null, string $vk_link = null, int $blood_type = null, int $rh_factor = null){
 
         $this->errors = [];
         $id = $this->table->getIdByToken($_COOKIE['session_token']);
         
         try{
-            $this->table->edit($id, $name, $sex, $birthday_timestamp, $shooting_type_id, $address, $description, $vk_link, $blood_type, $rh_factor);
+            $this->table->edit($id, $name, $sex, $birthday_timestamp, $address, $description, $vk_link, $blood_type, $rh_factor);
         }catch(Exception $e){
             array_push($this->errors, 'Не удалось обновить профиль');
         }

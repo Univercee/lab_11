@@ -1,7 +1,6 @@
 <?php
     if(isset($_COOKIE['session_token'])){
         $user = (new UserController())->getByToken($_COOKIE['session_token']);
-        $shooting_types = (new ShootingTypesController())->getAll();
     }
     else{
         header("Location: login");
@@ -43,27 +42,6 @@
             </div>
             <div class="col-md-3">
                 <input class="form-control" type="date" name="birthday" min="1900-01-01" max="<?php echo date("Y-m-d");?>" value="<?php echo $user["birthday"]?>"></input>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-3">
-                <p class="bold">Основной тип съемки</p>
-            </div>
-            <div class="col-md-3">
-                <select class="form-select" name="shooting_type_id">
-                    <option value="">Не указано</option>
-                    <?php
-                        foreach ($shooting_types as $key => $value) {
-                            $selected = $value["id"]==$user["shooting_type_id"]?"selected":"";
-                            ?>
-                            <option value="<?php echo $value["id"] ?>" <?php echo $selected ?>><?php echo $value["name"] ?></option>;
-                            <?php
-                        }
-                    ?>
-                </select>
             </div>
             <div class="col-md-3"></div>
         </div>
