@@ -31,11 +31,29 @@ else {
         case 'account':
             include('views/account.php');
             break;
+        case 'rooms':
+            include('views/rooms.php');
+            break;
+        case 'room':
+            include('views/room.php');
+            break;
         case 'account-edit':
             include('views/account-edit.php');
             break;
         case 'image-edit':
             include('views/image-edit.php');
+            break;
+        case 'room-image-edit':
+            include('views/room-image-edit.php');
+            break;
+        case 'room-create':
+            include('views/room-create.php');
+            break;
+        case 'room-edit':
+            include('views/room-edit.php');
+            break;
+        case 'room-delete':
+            include('views/room-delete.php');
             break;
 
         //обработка форм
@@ -50,6 +68,18 @@ else {
             break;
         case 'image-edit-action':
             include('views/actions/image-edit.php');
+            break;
+        case 'room-create-action':
+            include('views/actions/room-create.php');
+            break;
+        case 'room-edit-action':
+            include('views/actions/room-edit.php');
+            break;
+        case 'room-delete-action':
+            include('views/actions/room-delete.php');
+            break;
+        case 'room-image-edit-action':
+            include('views/actions/room-image-edit.php');
             break;
         case 'logout':
             include('views/actions/logout.php');
