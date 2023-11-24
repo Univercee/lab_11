@@ -31,7 +31,6 @@ class User {
     public function getByToken($token){
         $query = $this->pdo->prepare("SELECT `users`.* FROM `users`
                                     JOIN `sessions` ON `users`.id = `sessions`.user_id
-                                    LEFT JOIN `shooting_types` ON `users`.shooting_type_id = `shooting_types`.id
                                     WHERE `sessions`.token=:session_token");
         $query->bindParam(':session_token', $token);
         $query->execute();

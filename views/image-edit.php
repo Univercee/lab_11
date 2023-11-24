@@ -1,7 +1,6 @@
 <?php
     if(isset($_COOKIE['session_token'])){
         $user = (new UserController())->getByToken($_COOKIE['session_token']);
-        $shooting_types = (new ShootingTypesController())->getAll();
     }
     else{
         header("Location: login");
