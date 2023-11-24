@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 d-flex justify-content-center">
-            <img style="height:200px" src="./inc/catalog_images/<?php echo $user["image"]??"image_default.jpg" ?>" alt="">
+            <img style="height:200px" src="./inc/catalog_images/<?php echo $user["image"]??"image_default.png" ?>" alt="">
         </div>
         <div class="col-md-3"></div>
     </div>
@@ -67,16 +67,6 @@
         </div>
         <div class="col-md-3 text-end">
             <p><?php echo ($user["birthday"]=="0000-00-00"||empty($user["birthday"]))?"не указано":$user["birthday"]?></p>
-        </div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-3">
-            <p class="bold">Основной тип съемки</p>
-        </div>
-        <div class="col-md-3 text-end">
-            <p><?php echo $user["shooting_type"]??"не указано"?></p>
         </div>
         <div class="col-md-3"></div>
     </div>
