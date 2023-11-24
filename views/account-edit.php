@@ -1,8 +1,5 @@
 <?php
-    if(isset($_COOKIE['session_token'])){
-        $user = (new UserController())->getByToken($_COOKIE['session_token']);
-    }
-    else{
+    if(!$auth){
         header("Location: login");
     }
 ?>

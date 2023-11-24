@@ -4,6 +4,7 @@
     }
     require_once($_SERVER['DOCUMENT_ROOT'].'/Lr/.core/database/index.php');
     require_once($_SERVER['DOCUMENT_ROOT'].'/Lr/.core/controllers/index.php');
+    require($_SERVER['DOCUMENT_ROOT'].'/Lr/views/tools/auth.php');
 ?>
 
 <!DOCTYPE html>

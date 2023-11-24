@@ -1,3 +1,8 @@
+<?php
+    if(!$auth){
+        header("Location: login");
+    }
+?>
 <div class="container-sm row d-flex flex-column align-items-center mb-5">
     <h2 class="col-md-6 mb-5">Редактирование изображения</h2>
     <form action="room-image-edit-action" method="POST" enctype="multipart/form-data" class="col-md-12 d-flex flex-column gap-4">

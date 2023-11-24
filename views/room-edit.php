@@ -1,4 +1,7 @@
 <?php
+    if(!$auth){
+        header("Location: login");
+    }
     $employees = (new EmployeesController())->getAll();
     $room = (new RoomsController())->get($_GET["id"]);
 ?>

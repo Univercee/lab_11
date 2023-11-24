@@ -1,4 +1,7 @@
 <?php
+    if(!$auth){
+        header("Location: login");
+    }
     $employees = (new EmployeesController())->getAll();
 ?>
 <div class="container-sm row d-flex flex-column align-items-center mb-5">

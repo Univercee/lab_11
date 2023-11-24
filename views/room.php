@@ -1,11 +1,11 @@
 <?php
     if(empty($_GET['id'])){
-        //header('Location: rooms');
+        header('Location: rooms');
     }
     else{
         $room = (new RoomsController())->get($_GET['id']);
         if(empty($room)){
-            //header('Location: rooms');
+            header('Location: rooms');
         }
     }
 ?>
@@ -25,11 +25,13 @@
         </div>
         <div class="col-md-3"></div>
     </div>
-    <div class="row mb-5">
-        <div class="col-md-3"></div>
-        <a class="btn btn-primary text-white col-md-6" href="./room-image-edit?id=<?php echo $room["id"]?>">Изменить фотографию</a>
-        <div class="col-md-3"></div>
-    </div>
+    <?php if($auth){ ?>
+        <div class="row mb-5">
+            <div class="col-md-3"></div>
+            <a class="btn btn-primary text-white col-md-6" href="./room-image-edit?id=<?php echo $room["id"]?>">Изменить фотографию</a>
+            <div class="col-md-3"></div>
+        </div>
+    <?php } ?>
 
     
     <div class="row">
@@ -72,14 +74,22 @@
         </div>
         <div class="col-md-3"></div>
     </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <a class="btn btn-primary text-white col-md-6" href="./room-edit?id=<?php echo $room["id"]?>">Редактировать</a>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <a class="btn btn-danger text-white col-md-6" href="./room-delete-action?id=<?php echo $room["id"]?>">Удалить</a>
-        <div class="col-md-3"></div>
-    </div>
+    <?php
+        if($auth){
+            ?>
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <a class="btn btn-primary text-white col-md-6" href="./room-edit?id=<?php echo $room["id"]?>">Редактировать</a>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <a class="btn btn-danger text-white col-md-6" href="./room-delete-action?id=<?php echo $room["id"]?>">Удалить</a>
+                <div class="col-md-3"></div>
+            </div>
+
+            <?php
+        }
+    ?>
 </div>
