@@ -10,6 +10,7 @@
     }
 ?>
 <div class="container-md d-flex flex-column gap-4 mb-5">
+    <h4><a href="./rooms">К объявлениям</a></h4>
     <div class="row mb-5">
         <div class="col-md-3"></div>
         <h2 class="col-md-6"><?php echo $room['name']?></h2>
