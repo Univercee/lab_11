@@ -3,34 +3,31 @@
 class RoomsController {
     private $table;
     private $errors;
-    private $user_table;
     public function __construct()
     {
         $this->table = new Room();
-        $this->user_table = new User();
         $this->errors = [];
     }
 
-    public function add(string $name, string $description, int $price, int $user_id){
+    public function add($image, string $name, string $description, int $price, int $employer_id){
         $this->errors = [];
-        $created_by = $this->user_table->getIdByToken($_COOKIE['session_token']);
         
         try{
-            $this->table->create($name, $description, $price, $user_id, $created_by);
+            $id = $this->table->create($name, $description, $price, $employer_id);
+            $this->uploadImage($image, $id);
         }catch(Exception $e){
             array_push($this->errors, 'Не удалось создать объявление');
         }
         finally {
-            return $this->errors;
+            return ["errors"=>$this->errors, "id"=>$id];
         }
     }
 
-    public function edit(int $id, string $name, string $description, int $price, int $user_id){
+    public function edit(int $id, string $name, string $description, int $price, int $employer_id){
         $this->errors = [];
-        $created_by = $this->user_table->getIdByToken($_COOKIE['session_token']);
         
         try{
-            $this->table->edit($id, $name, $description, $price, $user_id);
+            $this->table->edit($id, $name, $description, $price, $employer_id);
         }catch(Exception $e){
             array_push($this->errors, 'Не удалось обновить объявление');
         }
